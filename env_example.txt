@@ -1,0 +1,10 @@
+# Required
+OPENAI_API_KEY=your_openai_api_key_here
+
+# Optional - for enhanced functionality
+RESEND_API_KEY=your_resend_api_key_here
+NEWS_API_KEY=your_news_api_key_here
+LANGSMITH_API_KEY=your_langsmith_api_key_here
+
+# Database (already configured for local SQLite)
+# DATABASE_URL=sqlite:///./cognitioflux.db 

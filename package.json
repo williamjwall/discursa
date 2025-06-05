@@ -1,0 +1,58 @@
+{
+  "name": "cognitioflux-platform",
+  "version": "2.0.0",
+  "description": "Revolutionary AI-powered learning platform that transforms any topic into structured micro-courses",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "ai-engine",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\" \"npm run dev:ai\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && python -m uvicorn main:app --reload --host 0.0.0.0 --port 8000",
+    "dev:ai": "cd ai-engine && python -m uvicorn main:app --reload --host 0.0.0.0 --port 8001",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && python -m build",
+    "test": "npm run test:frontend && npm run test:backend",
+    "test:frontend": "cd frontend && npm test",
+    "test:backend": "cd backend && python -m pytest",
+    "lint": "npm run lint:frontend && npm run lint:backend",
+    "lint:frontend": "cd frontend && npm run lint",
+    "lint:backend": "cd backend && python -m flake8",
+    "setup": "npm install && npm run setup:python",
+    "setup:python": "python -m pip install -r requirements.txt",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "migrate": "cd backend && alembic upgrade head",
+    "seed": "cd backend && python scripts/seed_data.py"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0",
+    "python": ">=3.11.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/cognitioflux"
+  },
+  "keywords": [
+    "ai",
+    "education",
+    "machine-learning",
+    "spaced-repetition",
+    "micro-learning",
+    "academic-research",
+    "knowledge-management"
+  ],
+  "author": "CognitioFlux Team",
+  "license": "MIT"
+} 
